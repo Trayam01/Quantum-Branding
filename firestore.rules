@@ -1,0 +1,22 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Enquiries collection
+    match /enquiries/{enquiryId} {
+      allow read, write, create, update, delete: if true;
+    }
+
+    // Webinar Registrations collection
+    match /webinarRegistrations/{registrationId} {
+      allow read, write, create, update, delete: if true;
+    }
+
+    // Default deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
+
+

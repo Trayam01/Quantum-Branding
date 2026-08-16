@@ -1,0 +1,77 @@
+{
+  "entities": {
+    "Enquiry": {
+      "title": "Enquiry",
+      "description": "Client project enquiry submitted through the website",
+      "type": "object",
+      "properties": {
+        "business": {
+          "type": "string",
+          "description": "User business or company name"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when enquiry was created"
+        },
+        "email": {
+          "type": "string",
+          "description": "Client email address"
+        },
+        "message": {
+          "type": "string",
+          "description": "Enquiry message details"
+        },
+        "name": {
+          "type": "string",
+          "description": "Client full name"
+        },
+        "phone": {
+          "type": "string",
+          "description": "Phone or WhatsApp number"
+        },
+        "service": {
+          "type": "string",
+          "description": "Requested service or package"
+        },
+        "source": {
+          "type": "string",
+          "description": "Lead source (e.g., website)"
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of the enquiry (e.g., New)"
+        }
+      },
+      "required": ["name", "phone", "service"]
+    },
+    "WebinarRegistration": {
+      "title": "Webinar Registration",
+      "description": "Registration for webinars or 1-on-1 VIP sessions",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "businessName": { "type": "string" },
+        "preferredSlot": { "type": "string" },
+        "webinarId": { "type": "string" },
+        "webinarTitle": { "type": "string" },
+        "webinarType": { "type": "string" },
+        "ticketNumber": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "phone", "webinarId"]
+    }
+  },
+  "firestore": {
+    "/enquiries/{enquiryId}": {
+      "schema": { "$ref": "#/entities/Enquiry" },
+      "description": "Stores client project enquiries"
+    },
+    "/webinarRegistrations/{registrationId}": {
+      "schema": { "$ref": "#/entities/WebinarRegistration" },
+      "description": "Stores webinar seat registrations"
+    }
+  }
+}
